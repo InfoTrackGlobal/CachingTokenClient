@@ -52,7 +52,7 @@ Task("Build")
 Task("Push-Packages")
     .IsDependentOn("Clean")
     .IsDependentOn("Build")
-    //.WithCriteria(TeamCity.IsRunningOnTeamCity)
+    .WithCriteria(TeamCity.IsRunningOnTeamCity)
     .DoesForEach(_projects, (project) =>
     {
         var projectDirectory = System.IO.Path.GetDirectoryName(project);
