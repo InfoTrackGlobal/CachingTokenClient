@@ -11,7 +11,7 @@ IEnumerable<string> _projects = new[]
 {
     "./src/InfoTrack.Authentication/InfoTrack.Authentication.csproj",
     "./src/InfoTrack.Authentication.Caching.DotNetCore/InfoTrack.Authentication.Caching.DotNetCore.csproj",
-    "./src/InfoTrack.Authentication.Caching.DotNetFramework/InfoTrack.Authentication.DotNetFramework.csproj",
+    "./src/InfoTrack.Authentication.Caching.DotNetFramework/InfoTrack.Authentication.Caching.DotNetFramework.csproj",
 };
 
 Setup((setupContext) => {

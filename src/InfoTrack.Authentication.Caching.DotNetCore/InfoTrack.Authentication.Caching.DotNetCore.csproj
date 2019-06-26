@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <Authors>InfoTrack</Authors>
+    <Product>InfoTrack.CachingTokenClient</Product>
+    <Description>OAuth 2 Token Client which automatically caches the authentication server response.</Description>
+    <PackageProjectUrl>https://github.com/InfoTrackGlobal/CachingTokenClient</PackageProjectUrl>
+    <PackageTags>oauth</PackageTags>
+    <PackageId>InfoTrack.Authentication.CachingTokenClient.DotNetCore</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +20,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\InfoTrack.Authentication\InfoTrack.Authentication.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

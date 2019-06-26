@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.2</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <Authors>InfoTrack</Authors>
+    <Product>InfoTrack.CachingTokenClient</Product>
+    <Description>Supporting library for InfoTrack.CachingTokenClient. You should install InfoTrack.Authentication.CachingTokenClient.DotNetCore or InfoTrack.Authentication.CachingTokenClient.DotNetFramework instead.</Description>
+    <PackageProjectUrl>https://github.com/InfoTrackGlobal/CachingTokenClient</PackageProjectUrl>
+    <PackageTags>oauth</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +19,13 @@
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net452'">
     <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
