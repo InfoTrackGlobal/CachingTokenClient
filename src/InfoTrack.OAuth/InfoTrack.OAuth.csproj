@@ -8,7 +8,7 @@
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <Authors>InfoTrack</Authors>
     <Product>InfoTrack CachingTokenClient</Product>
-    <Description>Supporting library for InfoTrack.CachingTokenClient. You should install InfoTrack.OAuth.CachingTokenClient.DotNetCore or InfoTrack.OAuth.CachingTokenClient.DotNetFramework instead.</Description>
+    <Description>OAuth Token Client Library.</Description>
     <PackageProjectUrl>https://github.com/InfoTrackGlobal/CachingTokenClient</PackageProjectUrl>
     <PackageTags>oauth</PackageTags>
   </PropertyGroup>

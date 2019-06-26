@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -213,9 +214,14 @@ namespace InfoTrack.OAuth
 
             HttpResponseMessage tokenResponse = await HttpClient.SendAsync(request).ConfigureAwait(false);
 
-            var result = await tokenResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var responseBody = await tokenResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            return JsonConvert.DeserializeObject<T>(result);
+            if (!tokenResponse.IsSuccessStatusCode && tokenResponse.StatusCode != HttpStatusCode.BadRequest)
+            {
+                throw new AuthenticationException($"Non-success status code: {tokenResponse.StatusCode}. Response body: {responseBody}");
+            }
+
+            return JsonConvert.DeserializeObject<T>(responseBody);
         }
     }
 }
