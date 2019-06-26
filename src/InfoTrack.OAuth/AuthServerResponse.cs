@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace InfoTrack.Authentication
+namespace InfoTrack.OAuth
 {
     public class AuthServerResponse
     {

@@ -1,4 +1,5 @@
 #addin nuget:?package=Cake.Git&version=0.19.0
+#addin "Cake.Powershell"
 
 var target = Argument("target", "Default");
 var configuration = Argument("config", "Release");
@@ -9,9 +10,9 @@ DotNetCoreBuildSettings _dotnetCoreBuildSettings;
 
 IEnumerable<string> _projects = new[]
 {
-    "./src/InfoTrack.Authentication/InfoTrack.Authentication.csproj",
-    "./src/InfoTrack.Authentication.Caching.DotNetCore/InfoTrack.Authentication.Caching.DotNetCore.csproj",
-    "./src/InfoTrack.Authentication.Caching.DotNetFramework/InfoTrack.Authentication.Caching.DotNetFramework.csproj",
+    "./src/InfoTrack.OAuth/InfoTrack.OAuth.csproj",
+    "./src/InfoTrack.OAuth.Caching.DotNetCore/InfoTrack.OAuth.Caching.DotNetCore.csproj",
+    "./src/InfoTrack.OAuth.Caching.DotNetFramework/InfoTrack.OAuth.Caching.DotNetFramework.csproj",
 };
 
 Setup((setupContext) => {
@@ -30,9 +31,16 @@ Setup((setupContext) => {
             .Append($"/p:PackageVersion={_versionInfo.NuGetVersion}")
             .Append($"/p:FileVersion={_versionInfo.Major}.{_versionInfo.Minor}.{_versionInfo.Patch}")
             .Append($"/p:InformationalVersion={_versionInfo.InformationalVersion}")
-            .Append($"/p:IncludeSymbols=true")
+            .Append("/p:IncludeSymbols=false")
     };
 });
+
+Task("Clean")
+    .Does(() =>
+    {
+        CleanDirectories("**/bin");
+        CleanDirectories("**/obj");
+    });
 
 Task("Build")
     .DoesForEach(_projects, (project) =>
@@ -41,19 +49,21 @@ Task("Build")
     });
 
 Task("Push-Packages")
+    .IsDependentOn("Clean")
     .IsDependentOn("Build")
     .WithCriteria(TeamCity.IsRunningOnTeamCity)
-    .Does(() =>
+    .DoesForEach(_projects, (project) =>
     {
-        var packages = GetFiles("**/*.symbols.nupkg");
+        var projectDirectory = System.IO.Path.GetDirectoryName(project);
 
-        NuGetPush(packages, new NuGetPushSettings {
-            Source = "https://api.nuget.org/v3/index.json",
-            ApiKey = nugetApiKey
-        });
+        foreach(var package in GetFiles($"{projectDirectory}/**/*.nupkg"))
+        {
+            DotNetCoreNuGetPush(package.GetFilename().FullPath, new DotNetCoreNuGetPushSettings { Source = "https://api.nuget.org/v3/index.json", ApiKey = nugetApiKey });
+        }
     });
 
 Task("Default")
+    .IsDependentOn("Clean")
     .IsDependentOn("Build")
     .IsDependentOn("Push-Packages");
 

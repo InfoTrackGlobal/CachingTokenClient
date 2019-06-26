@@ -26,9 +26,9 @@ This package contains a .NET Core implementation of the `CachingTokenClient`. In
 
 ### Usage
 
-1. Install the `InfoTrack.Authentication.Caching.DotNetCore` NuGet package.
+1. Install the `InfoTrack.OAuth.Caching.DotNetCore` NuGet package.
 ```
-PM> Install-Package InfoTrack.Authentication.Caching.DotNetCore
+PM> Install-Package InfoTrack.OAuth.Caching.DotNetCore
 ```
 
 2. Register the .NET Core Memory Cache in your application.
@@ -63,10 +63,10 @@ You may register the `CachingTokenClient` with any dependency lifecycle as it is
 
 This package contains a .NET Framework implementation of the `CachingTokenClient`. Internally this uses `System.Runtime.Caching.MemoryCache`.
 
-1. Install the `InfoTrack.Authentication.Caching.DotNetFramework` NuGet package.
+1. Install the `InfoTrack.OAuth.Caching.DotNetFramework` NuGet package.
 
 ```
-PM> Install-Package InfoTrack.Authentication.Caching.DotNetFramework
+PM> Install-Package InfoTrack.OAuth.Caching.DotNetFramework
 ```
 
 2. Register the `CachingTokenClient` for dependency injection.

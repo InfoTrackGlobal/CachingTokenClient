@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace InfoTrack.Authentication
+namespace InfoTrack.OAuth
 {
     /// <summary>
     /// OAuth2 Token Client

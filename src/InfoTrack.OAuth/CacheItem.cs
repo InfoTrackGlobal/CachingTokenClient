@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace InfoTrack.Authentication
+namespace InfoTrack.OAuth
 {
     /// <summary>
     /// Represents a cache entry.

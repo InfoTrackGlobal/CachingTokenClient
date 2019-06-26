@@ -3,7 +3,7 @@ using System.Runtime.Caching;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace InfoTrack.Authentication.Caching.DotNetFramework
+namespace InfoTrack.OAuth.Caching.DotNetFramework
 {
     public class CachingTokenClient : BaseCachingTokenClient
     {

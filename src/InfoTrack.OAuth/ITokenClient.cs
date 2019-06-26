@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace InfoTrack.Authentication
+namespace InfoTrack.OAuth
 {
     public interface ITokenClient
     {

@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace InfoTrack.Authentication.Caching.DotNetCore
+namespace InfoTrack.OAuth.Caching.DotNetCore
 {
     public class CachingTokenClient : BaseCachingTokenClient
     {
