@@ -3,7 +3,8 @@
 
 var target = Argument("target", "Default");
 var configuration = Argument("config", "Release");
-var nugetApiKey = Argument("nugetApiKey", "");
+var packageServerApiKey = Argument("packageServerApiKey", "");
+var packageServerSource = Argument("packageServerSource", "https://api.nuget.org/v3/index.json");
 
 GitVersion _versionInfo;
 DotNetCoreBuildSettings _dotnetCoreBuildSettings;
@@ -51,14 +52,14 @@ Task("Build")
 Task("Push-Packages")
     .IsDependentOn("Clean")
     .IsDependentOn("Build")
-    .WithCriteria(TeamCity.IsRunningOnTeamCity)
+    //.WithCriteria(TeamCity.IsRunningOnTeamCity)
     .DoesForEach(_projects, (project) =>
     {
         var projectDirectory = System.IO.Path.GetDirectoryName(project);
 
         foreach(var package in GetFiles($"{projectDirectory}/**/*.nupkg"))
         {
-            DotNetCoreNuGetPush(package.GetFilename().FullPath, new DotNetCoreNuGetPushSettings { Source = "https://api.nuget.org/v3/index.json", ApiKey = nugetApiKey });
+            NuGetPush(package.FullPath, new NuGetPushSettings { Source = packageServerSource, ApiKey = packageServerApiKey });
         }
     });
 
