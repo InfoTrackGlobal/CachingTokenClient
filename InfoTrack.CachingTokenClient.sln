@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoTrack.Authentication", "src\InfoTrack.Authentication\InfoTrack.Authentication.csproj", "{E3CD85B5-8EDE-4B0C-9C40-99CA0A9F778C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoTrack.Authentication.Caching.DotNetCore", "src\InfoTrack.Authentication.Caching.DotNetCore\InfoTrack.Authentication.Caching.DotNetCore.csproj", "{AB045B23-FC55-46B1-AC2D-904F1D1FC832}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoTrack.Authentication.Caching.DotNetFramework", "src\InfoTrack.Authentication.Caching.DotNetFramework\InfoTrack.Authentication.Caching.DotNetFramework.csproj", "{42B5F2F7-3A22-4EDB-A4A1-666C170F340F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1F49F9A6-6A36-4597-B419-CE8812B376AB}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		build.cake = build.cake
+		build.ps1 = build.ps1
+		build.sh = build.sh
+		GitVersion.yml = GitVersion.yml
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3CD85B5-8EDE-4B0C-9C40-99CA0A9F778C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3CD85B5-8EDE-4B0C-9C40-99CA0A9F778C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3CD85B5-8EDE-4B0C-9C40-99CA0A9F778C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3CD85B5-8EDE-4B0C-9C40-99CA0A9F778C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB045B23-FC55-46B1-AC2D-904F1D1FC832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB045B23-FC55-46B1-AC2D-904F1D1FC832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB045B23-FC55-46B1-AC2D-904F1D1FC832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB045B23-FC55-46B1-AC2D-904F1D1FC832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42B5F2F7-3A22-4EDB-A4A1-666C170F340F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42B5F2F7-3A22-4EDB-A4A1-666C170F340F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42B5F2F7-3A22-4EDB-A4A1-666C170F340F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42B5F2F7-3A22-4EDB-A4A1-666C170F340F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {741223F3-E67B-47E5-91E7-144F96A7CD74}
+	EndGlobalSection
+EndGlobal
