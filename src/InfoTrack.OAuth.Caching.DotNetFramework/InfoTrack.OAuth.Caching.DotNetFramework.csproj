@@ -11,12 +11,7 @@
     <Description>OAuth 2 Token Client which automatically caches the authentication server response.</Description>
     <PackageProjectUrl>https://github.com/InfoTrackGlobal/CachingTokenClient</PackageProjectUrl>
     <PackageTags>oauth</PackageTags>
-    <PackageId>InfoTrack.Authentication.CachingTokenClient.DotNetFramework</PackageId>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\InfoTrack.Authentication\InfoTrack.Authentication.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="System.Runtime.Caching" />
@@ -27,6 +22,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InfoTrack.OAuth\InfoTrack.OAuth.csproj" />
   </ItemGroup>
 
 </Project>

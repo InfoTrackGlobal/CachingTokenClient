@@ -1,4 +1,4 @@
-﻿namespace InfoTrack.Authentication
+﻿namespace InfoTrack.OAuth
 {
     public static class Constants
     {

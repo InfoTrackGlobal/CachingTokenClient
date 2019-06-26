@@ -1,24 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.2</TargetFrameworks>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <Authors>InfoTrack</Authors>
     <Product>InfoTrack.CachingTokenClient</Product>
-    <Description>Supporting library for InfoTrack.CachingTokenClient. You should install InfoTrack.Authentication.CachingTokenClient.DotNetCore or InfoTrack.Authentication.CachingTokenClient.DotNetFramework instead.</Description>
+    <Description>OAuth 2 Token Client which automatically caches the authentication server response.</Description>
     <PackageProjectUrl>https://github.com/InfoTrackGlobal/CachingTokenClient</PackageProjectUrl>
     <PackageTags>oauth</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="1.1.2" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net452'">
-    <Reference Include="System.Net.Http" />
+  <ItemGroup>
+    <ProjectReference Include="..\InfoTrack.OAuth\InfoTrack.OAuth.csproj" />
   </ItemGroup>
 
   <ItemGroup>
