@@ -1,5 +1,4 @@
 #addin nuget:?package=Cake.Git&version=0.19.0
-#addin "Cake.Powershell"
 
 var target = Argument("target", "Default");
 var configuration = Argument("config", "Release");
