@@ -80,6 +80,23 @@ namespace InfoTrack.OAuth
             return ResourceOwnerPasswordGrantInternalAsync(tokenEndpoint, username, password, clientId, clientSecret, requiredScopes, extraParameters);
         }
 
+        public async Task<TokenResponse> RefreshTokenGrantAsync(Uri tokenEndpoint, string refreshToken, string clientId, string clientSecret)
+        {
+            return await GetOrCreateAsync(GenerateCacheKey(Constants.GrantTypes.RefreshToken, null, null, clientId, clientSecret), async cacheEntry =>
+            {
+                var tokenResponse = await _tokenClient.RefreshTokenGrantAsync(tokenEndpoint, refreshToken, clientId, clientSecret);
+
+                if (tokenResponse.Error != null)
+                {
+                    throw new AuthenticationException($"Error: {tokenResponse.Error}. Error description: {tokenResponse.ErrorDescription}");
+                }
+
+                cacheEntry.AbsoluteExpiration = DateTime.Now.AddSeconds(tokenResponse.ExpiresIn ?? _clientOptions.DefaultCacheExpiry);
+
+                return tokenResponse;
+            });
+        }
+
         private async Task<TokenResponse> ClientCredentialsGrantInternalAsync(Uri tokenEndpoint, string clientId, string clientSecret, IEnumerable<string> requiredScopes)
         {
             return await GetOrCreateAsync(GenerateCacheKey(Constants.GrantTypes.ClientCredentials, null, null, clientId, clientSecret), async cacheEntry =>

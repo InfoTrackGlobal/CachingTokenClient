@@ -9,10 +9,7 @@ namespace InfoTrack.OAuth.Caching.DotNetCore
         private readonly IMemoryCache _memoryCache;
         
         public CachingTokenClient(IMemoryCache memoryCache)
-            : base(ClientOptions.Default)
-        {
-            _memoryCache = memoryCache ?? throw new ArgumentNullException(nameof(memoryCache));
-        }
+            : this(memoryCache, ClientOptions.Default) { }
 
         public CachingTokenClient(IMemoryCache memoryCache, ClientOptions clientOptions)
             : base(clientOptions)

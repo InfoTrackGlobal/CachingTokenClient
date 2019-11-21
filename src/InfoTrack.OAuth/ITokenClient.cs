@@ -12,5 +12,6 @@ namespace InfoTrack.OAuth
         Task<TokenResponse> ResourceOwnerPasswordGrantAsync(Uri tokenEndpoint, string username, string password, string clientId, string clientSecret);
         Task<TokenResponse> ResourceOwnerPasswordGrantAsync(Uri tokenEndpoint, string username, string password, string clientId, string clientSecret, IEnumerable<string> requiredScopes);
         Task<TokenResponse> ResourceOwnerPasswordGrantAsync(Uri tokenEndpoint, string username, string password, string clientId, string clientSecret, IEnumerable<string> requiredScopes, IDictionary<string, string> extraParameters);
+        Task<TokenResponse> RefreshTokenGrantAsync(Uri tokenEndpoint, string refreshToken, string clientId, string clientSecret);
     }
 }
