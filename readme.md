@@ -1,22 +1,27 @@
-# InfoTrack CachingTokenClient
+# OAuth 2.0 TokenClient & CachingTokenClient
 
 - OAuth 2.0 Client Library for .NET
 - Supports >= .NET Core 1.1 and .NET Framework 4.5.2
-- Automatically caches authentication server responses
-- Supports `client_credentials` and `password` grant types
+- Provides implementions which automatically cache authentication server responses
+- Supports the following grant types
+  - password
+  - client_credentials
+  - refresh_token
 
-This repository contains the source code for the `CachingTokenClient`, which is an OAuth2.0 client for .NET which automatically caches the authentication server response in memory on the server.
+This repository contains the source code for the `TokenClient` and `CachingTokenClient` which is an OAuth2.0 client for .NET. The caching version automatically caches the authentication server response in memory on the server.
+
+## Contents
+
+- [Cache Expiry](#cache-expiry)
+- [.NET Core](#net-core)
+- [.NET Framework](#net-framework)
+- [Options](#options)
 
 ## Cache Expiry
 If the [server response](https://www.oauth.com/oauth2-servers/access-tokens/access-token-response/) includes a value for `expires_in`, the response is cached up until this value. If the server does not include this value, it is cached for 24 hours, though this can be overridden using the `DefaultCacheExpiry` option.
 
 > Note: If you are using a refresh token, you should store this separately, and use it to get a new token once your access token expires.
 
-## Contents
-
-- [.NET Core](#net-core)
-- [.NET Framework](#net-framework)
-- [Options](#options)
 
 ## .NET Core
 
