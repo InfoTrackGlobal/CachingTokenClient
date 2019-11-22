@@ -13,11 +13,11 @@ namespace InfoTrack.OAuth.Caching.DotNetFramework
         public CachingTokenClient()
             : this(MemoryCache.Default) { }
 
+        public CachingTokenClient(ClientOptions clientOptions)
+            : this(MemoryCache.Default, clientOptions) { }
+
         public CachingTokenClient(ObjectCache cache)
-            : base(ClientOptions.Default)
-        {
-            _cache = cache ?? throw new ArgumentNullException(nameof(cache));
-        }
+            : this(cache, ClientOptions.Default) { }
 
         public CachingTokenClient(ObjectCache cache, ClientOptions clientOptions)
             : base(clientOptions)

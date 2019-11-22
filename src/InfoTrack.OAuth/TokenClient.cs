@@ -151,6 +151,37 @@ namespace InfoTrack.OAuth
             return ResourceOwnerPasswordGrantInternalAsync(tokenEndpoint, username, password, clientId, clientSecret, requiredScopes, extraParameters);
         }
 
+        /// <summary>
+        /// This is the OAuth2.0 grant type used to exchange a refresh token for an access token.
+        /// This allows clients to continue to have a valid access token without further interaction with the user.
+        /// </summary>
+        /// <param name="tokenEndpoint"></param>
+        /// <param name="refreshToken"></param>
+        /// <param name="clientId"></param>
+        /// <param name="clientSecret"></param>
+        /// <returns></returns>
+        public Task<TokenResponse> RefreshTokenGrantAsync(Uri tokenEndpoint, string refreshToken, string clientId, string clientSecret)
+        {
+            if (tokenEndpoint == null) throw new ArgumentNullException(nameof(tokenEndpoint));
+            if (string.IsNullOrWhiteSpace(clientId)) throw new ArgumentException("Null or blank argument", nameof(clientId));
+            if (string.IsNullOrWhiteSpace(clientSecret)) throw new ArgumentException("Null or blank argument", nameof(clientSecret));
+
+            return RefreshTokenGrantInternalAsync(tokenEndpoint, refreshToken, clientId, clientSecret);
+        }
+
+        private async Task<TokenResponse> RefreshTokenGrantInternalAsync(Uri tokenEndpoint, string refreshToken, string clientId, string clientSecret)
+        {
+            var request = new Dictionary<string, string>
+            {
+                { "grant_type", Constants.GrantTypes.RefreshToken },
+                { "refresh_token", refreshToken },
+                { "client_id", clientId },
+                { "client_secret", clientSecret }
+            };
+
+            return await Request<TokenResponse>(tokenEndpoint, request).ConfigureAwait(false);
+        }
+
         private async Task<TokenResponse> ClientCredentialsGrantInternalAsync(Uri tokenEndpoint, string clientId, string clientSecret, IEnumerable<string> requiredScopes)
         {
             var request = new Dictionary<string, string>
