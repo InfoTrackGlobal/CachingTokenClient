@@ -94,6 +94,36 @@ var tokenResponse = await tokenClient.ClientCredentialsGrantAsync(
 ```
 You may register the `CachingTokenClient` with any dependency lifecycle as it is fully thread safe.
 
+## .NET Standard
+
+- Requires >= .NET Standard 2.0
+
+This package contains a .NET Standard  implementation of the `CachingTokenClient`. Internally this uses `System.Runtime.Caching.MemoryCache`.
+
+1. Install the `InfoTrack.OAuth.Caching.DotNetStandard` NuGet package.
+
+```
+PM> Install-Package InfoTrack.OAuth.Caching.DotNetStandard
+```
+
+2. Optionally register the `CachingTokenClient` for dependency injection.
+
+```C#
+// Ninject example
+_kernel.Bind<ITokenClient>().To<CachingTokenClient>();
+```
+
+3. Whenever you need a token, inject an ITokenClient, and call a token method. It will return the cached token unless it has expired, at which point it will grab a new one.
+
+```C#
+var tokenResponse = await tokenClient.ClientCredentialsGrantAsync(
+    new Uri("https://authenticate.me/connect/token"),
+    "client_id",
+    "client_secret"
+    );
+```
+You may register the `CachingTokenClient` with any dependency lifecycle as it is fully thread safe.
+
 ## Non-Caching Version
 If all you need is a basic token client with very few dependencies, you can use the base package on its own.
 

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt" Link="LICENSE.txt">
+      <PackagePath></PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InfoTrack.OAuth\InfoTrack.OAuth.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Runtime.Caching">
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Runtime.Caching.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
