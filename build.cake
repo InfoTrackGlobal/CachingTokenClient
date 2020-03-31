@@ -11,7 +11,6 @@ DotNetCoreBuildSettings _dotnetCoreBuildSettings;
 IEnumerable<string> _projects = new[]
 {
     "./src/InfoTrack.OAuth/InfoTrack.OAuth.csproj",
-    "./src/InfoTrack.OAuth.Caching.DotNetCore/InfoTrack.OAuth.Caching.DotNetCore.csproj",
     "./src/InfoTrack.OAuth.Caching.DotNetFramework/InfoTrack.OAuth.Caching.DotNetFramework.csproj",
 	"./src/InfoTrack.OAuth.Caching.DotNetStandard/InfoTrack.OAuth.Caching.DotNetStandard.csproj",
 };

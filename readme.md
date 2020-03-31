@@ -28,9 +28,9 @@ If the [server response](https://www.oauth.com/oauth2-servers/access-tokens/acce
 
 ## .NET Core
 
-- Requires >= .NET Core 1.1
+Please use the .NET Standard package for .NET Core applications.
 
-This package contains a .NET Core implementation of the `CachingTokenClient`. Internally this uses the `Microsoft.Extensions.Caching.Memory` package. Please see [Cache in-memory in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/memory) for more information.
+- Requires >= .NET Core 1.1
 
 ### Usage
 
