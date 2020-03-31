@@ -2,15 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicenseExpression></PackageLicenseExpression>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Authors>InfoTrack</Authors>
-    <Product>InfoTrack.CachingTokenClient</Product>
-    <Description>OAuth 2 Token Client which automatically caches the authentication server response.</Description>
-    <PackageProjectUrl>https://github.com/InfoTrackGlobal/CachingTokenClient</PackageProjectUrl>
-    <PackageTags>oauth</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,12 +12,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="1.1.0" />
-    <PackageReference Include="System.Runtime.Caching" Version="4.7.0" />
+    <ProjectReference Include="..\InfoTrack.OAuth\InfoTrack.OAuth.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InfoTrack.OAuth\InfoTrack.OAuth.csproj" />
+    <Reference Include="System.Runtime.Caching">
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Runtime.Caching.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
