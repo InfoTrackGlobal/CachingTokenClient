@@ -30,7 +30,7 @@ If the [server response](https://www.oauth.com/oauth2-servers/access-tokens/acce
 
 - Requires >= .NET Core 1.1
 
-This package contains a .NET Core implementation of the `CachingTokenClient`. Internally this uses the `Microsoft.Extensions.Caching.Memory` package. Please see [Cache in-memory in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/memory) for more information.
+Please use the .NET Standard package for .NET Core applications.
 
 ### Usage
 
