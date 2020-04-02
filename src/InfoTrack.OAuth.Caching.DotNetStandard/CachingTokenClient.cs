@@ -1,13 +1,13 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Memory;
 
-namespace InfoTrack.OAuth.Caching.DotNetCore
+namespace InfoTrack.OAuth.Caching.DotNetStandard
 {
     public class CachingTokenClient : BaseCachingTokenClient
     {
         private readonly IMemoryCache _memoryCache;
-        
+
         public CachingTokenClient(IMemoryCache memoryCache)
             : this(memoryCache, ClientOptions.Default) { }
 

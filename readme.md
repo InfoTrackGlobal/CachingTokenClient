@@ -30,7 +30,7 @@ If the [server response](https://www.oauth.com/oauth2-servers/access-tokens/acce
 
 - Requires >= .NET Core 1.1
 
-This package contains a .NET Core implementation of the `CachingTokenClient`. Internally this uses the `Microsoft.Extensions.Caching.Memory` package. Please see [Cache in-memory in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/memory) for more information.
+Please use the .NET Standard package for .NET Core applications.
 
 ### Usage
 
@@ -74,6 +74,36 @@ This package contains a .NET Framework implementation of the `CachingTokenClient
 
 ```
 PM> Install-Package InfoTrack.OAuth.Caching.DotNetFramework
+```
+
+2. Optionally register the `CachingTokenClient` for dependency injection.
+
+```C#
+// Ninject example
+_kernel.Bind<ITokenClient>().To<CachingTokenClient>();
+```
+
+3. Whenever you need a token, inject an ITokenClient, and call a token method. It will return the cached token unless it has expired, at which point it will grab a new one.
+
+```C#
+var tokenResponse = await tokenClient.ClientCredentialsGrantAsync(
+    new Uri("https://authenticate.me/connect/token"),
+    "client_id",
+    "client_secret"
+    );
+```
+You may register the `CachingTokenClient` with any dependency lifecycle as it is fully thread safe.
+
+## .NET Standard
+
+- Requires >= .NET Standard 2.0
+
+This package contains a .NET Standard  implementation of the `CachingTokenClient`. Internally this uses `System.Runtime.Caching.MemoryCache`.
+
+1. Install the `InfoTrack.OAuth.Caching.DotNetStandard` NuGet package.
+
+```
+PM> Install-Package InfoTrack.OAuth.Caching.DotNetStandard
 ```
 
 2. Optionally register the `CachingTokenClient` for dependency injection.
