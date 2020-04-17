@@ -29,5 +29,13 @@ namespace InfoTrack.OAuth.Caching.DotNetStandard
                 return item;
             });
         }
+
+        protected override void InvalidateToken(string key)
+        {
+            if (_memoryCache.TryGetValue(key, out var cached) && cached != null)
+            {
+                _memoryCache.Remove(key);
+            }
+        }
     }
 }

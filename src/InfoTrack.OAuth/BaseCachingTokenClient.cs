@@ -16,6 +16,8 @@ namespace InfoTrack.OAuth
 
         protected abstract Task<TItem> GetOrCreateAsync<TItem>(string key, Func<CacheItem, Task<TItem>> factory);
 
+        protected abstract void InvalidateToken(string key);
+
         public Task<TokenResponse> ClientCredentialsGrantAsync(Uri tokenEndpoint, string clientId, string clientSecret)
         {
             if (tokenEndpoint == null) throw new ArgumentNullException(nameof(tokenEndpoint));

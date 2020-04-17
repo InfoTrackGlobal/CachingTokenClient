@@ -57,5 +57,13 @@ namespace InfoTrack.OAuth.Caching.DotNetFramework
                 _semaphore.Release();
             }
         }
+
+        protected override void InvalidateToken(string key)
+        {
+            if (_cache.Get(key) != null)
+            {
+                _cache.Remove(key);
+            }
+        }
     }
 }
